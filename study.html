@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ganpat University | Study</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="page dashboard-page">
+  <div class="container">
+    <header class="topbar glass elevated-bar">
+      <div class="brand">
+        <img src="logo.jpeg" alt="Logo">
+        <div>Ganpat University<small>Protected Study Portal</small></div>
+      </div>
+      <div class="nav-actions">
+        <span class="badge" id="sessionBadge">Study Portal</span>
+        <a href="portal.html" class="btn btn-secondary">Portal</a>
+        <button class="btn btn-primary" id="studyGoLoginBtn" type="button">Back to Dashboard</button>
+      </div>
+    </header>
+
+    <section class="hero study-hero">
+      <div class="hero-card glass feature-panel">
+        <span class="badge">Study Section</span>
+        <h1>Login Protected Study Portal</h1>
+        <p id="studyRoleNote">Protected study portal.</p>
+        <div class="notice" style="margin-top:14px">Subject par click karo, phir Unit 1 to 5 open hoga. Unit select karte hi Notes, IMP aur Material khulega. Teacher sirf apne subject ka content upload/edit kar sakta hai, student sirf view kar sakta hai.</div>
+      </div>
+      <div class="welcome-card glass feature-panel">
+        <h3>How it works</h3>
+        <div class="feature-list" style="margin-top:12px">
+          <div class="feature-item">1. Login karo</div>
+          <div class="feature-item">2. Dashboard se Study page kholo</div>
+          <div class="feature-item">3. Subject select karo</div>
+          <div class="feature-item">4. Unit select karo</div>
+          <div class="feature-item">5. Notes / IMP / Material open karo</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel glass feature-panel" style="margin-top:22px">
+      <div class="section-title"><h2>Subjects</h2><span class="small">Click any subject to open five units</span></div>
+      <div class="subject-grid" id="studySubjectGrid"></div>
+    </section>
+
+    <section class="study-layout" style="margin-top:22px">
+      <div class="panel glass feature-panel">
+        <div class="section-title"><h2>Units</h2><span class="small">Unit 1 to Unit 5</span></div>
+        <div class="unit-grid" id="studyUnitGrid"></div>
+      </div>
+
+      <div class="panel glass feature-panel">
+        <div class="section-title"><h2>Section Options</h2><span class="badge" id="studyEditorBadge">View Mode</span></div>
+        <div class="section-grid" id="studySectionGrid"></div>
+        <div class="study-breadcrumb small" id="studyBreadcrumb"></div>
+      </div>
+    </section>
+
+    <section class="study-layout" style="margin-top:22px">
+      <div class="panel glass feature-panel" id="studyContentArea"></div>
+      <div class="panel glass feature-panel" id="studyEditorArea"></div>
+    </section>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/study.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===== FRIDAY AI CHATBOT — GEMINI ===== -->
+<style>
+  #friday-open {
+    position: fixed; right: 24px; bottom: 24px; z-index: 9998;
+    padding: 14px 20px; border: 1px solid #b8e986;
+    border-radius: 14px; background: linear-gradient(135deg,#123c2b,#071b14);
+    color: #eaffd7; font: 600 15px Arial,sans-serif;
+    cursor: pointer; box-shadow: 0 0 22px #36c87835;
+  }
+  #friday-chat {
+    position: fixed; right: 24px; bottom: 88px; z-index: 9999;
+    display: flex; flex-direction: column;
+    width: min(390px,calc(100vw - 24px));
+    height: min(550px,calc(100vh - 120px));
+    overflow: hidden; border: 1px solid #386d4f; border-radius: 18px;
+    background: #07150f; color: #e7f7ec;
+    box-shadow: 0 18px 55px #0009; font-family: Arial,sans-serif;
+  }
+  #friday-chat[hidden] { display: none; }
+  #friday-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px; background: linear-gradient(120deg,#174d34,#0b2519);
+    border-bottom: 1px solid #386d4f;
+  }
+  #friday-header strong { color: #c5f59a; letter-spacing: 1px; }
+  #friday-close {
+    border: 0; background: transparent; color: white;
+    font-size: 24px; cursor: pointer;
+  }
+  #friday-status {
+    padding: 8px 14px; color: #a6c9b0; font-size: 12px;
+    border-bottom: 1px solid #203a2b;
+  }
+  #friday-messages {
+    flex: 1; overflow-y: auto; padding: 14px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .friday-msg {
+    max-width: 88%; padding: 11px 13px; border-radius: 13px;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+    line-height: 1.5; font-size: 14px;
+  }
+  .friday-user {
+    align-self: flex-end; background: #20583c;
+    border: 1px solid #397c50;
+  }
+  .friday-ai {
+    align-self: flex-start; background: #10271b;
+    border: 1px solid #284a35;
+  }
+  #friday-form {
+    display: flex; gap: 8px; padding: 12px;
+    border-top: 1px solid #294634;
+  }
+  #friday-input {
+    flex: 1; min-width: 0; padding: 12px;
+    border: 1px solid #42634d; border-radius: 10px;
+    outline: none; background: #0b1d13; color: white; font-size: 14px;
+  }
+  #friday-input:focus { border-color: #a4dc79; }
+  #friday-send {
+    padding: 0 15px; border: 0; border-radius: 10px;
+    background: #b7e88d; color: #102418; font-weight: bold; cursor: pointer;
+  }
+  #friday-send:disabled { opacity: .5; cursor: wait; }
+  @media(max-width:480px) {
+    #friday-open { right: 12px; bottom: 12px; }
+    #friday-chat { right: 12px; bottom: 76px; }
+  }
+</style>
+
+<button id="friday-open" type="button">✨ Friday AI</button>
+
+<section id="friday-chat" aria-label="Friday AI Chat" hidden>
+  <header id="friday-header">
+    <div>
+      <strong>FRIDAY AI</strong>
+      <div style="font-size:12px;margin-top:5px">Powered by Gemini</div>
+    </div>
+    <button id="friday-close" type="button" aria-label="Close chat">×</button>
+  </header>
+
+  <div id="friday-status" role="status">Ready to chat</div>
+
+  <div id="friday-messages" aria-live="polite">
+    <div class="friday-msg friday-ai">
+      Hello! I'm Friday, your AI assistant. How can I help you?
+    </div>
+  </div>
+
+  <form id="friday-form">
+    <input id="friday-input" type="text"
+      placeholder="Ask me anything..." autocomplete="off" required>
+    <button id="friday-send" type="submit">Send</button>
+  </form>
+</section>
+
+<script>
+(() => {
+  "use strict";
+
+  // Do not paste a secret key into a public HTML file.
+  // Use a server-side backend for a deployed website.
+  // The shared key should be replaced/revoked before testing.
+  const API_KEY = ""; // Configure credentials securely on your backend
+
+  const MODEL = "gemini-3.8-flash";
+  const API_URL =
+    "https://generativelanguage.googleapis.com/v1beta/models/" +
+    MODEL + ":generateContent";
+
+  const openBtn = document.getElementById("friday-open");
+  const closeBtn = document.getElementById("friday-close");
+  const chat = document.getElementById("friday-chat");
+  const form = document.getElementById("friday-form");
+  const input = document.getElementById("friday-input");
+  const sendBtn = document.getElementById("friday-send");
+  const messagesEl = document.getElementById("friday-messages");
+  const statusEl = document.getElementById("friday-status");
+
+  const history = [];
+  let busy = false;
+
+  openBtn.addEventListener("click", () => {
+    chat.hidden = false;
+    input.focus();
+  });
+
+  closeBtn.addEventListener("click", () => {
+    chat.hidden = true;
+  });
+
+  function addMessage(text, role) {
+    const el = document.createElement("div");
+    el.className = "friday-msg " +
+      (role === "user" ? "friday-user" : "friday-ai");
+    el.textContent = text;
+    messagesEl.appendChild(el);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return el;
+  }
+
+  function getErrorMessage(status, data) {
+    const message = data?.error?.message || "Unknown API error";
+
+    if (status === 400) {
+      return "Bad request: " + message;
+    }
+    if (status === 401 || status === 403) {
+      return "API authentication/permission issue: " + message;
+    }
+    if (status === 404) {
+      return "Model or API endpoint not found. Check model availability: " + message;
+    }
+    if (status === 429) {
+      return "API quota or rate limit issue: " + message;
+    }
+    return "Gemini API error (" + status + "): " + message;
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const userText = input.value.trim();
+    if (!userText || busy) return;
+
+    if (!API_KEY.trim()) {
+      addMessage(
+        "Setup required: connect Gemini through a secure backend before sending messages.",
+        "assistant"
+      );
+      return;
+    }
+
+    busy = true;
+    sendBtn.disabled = true;
+    input.disabled = true;
+
+    addMessage(userText, "user");
+    input.value = "";
+
+    const waiting = addMessage("Thinking...", "assistant");
+    statusEl.textContent = "Connecting to Gemini...";
+
+    const requestContents = [
+      ...history,
+      { role: "user", parts: [{ text: userText }] }
+    ];
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": API_KEY.trim()
+        },
+        body: JSON.stringify({
+          contents: requestContents,
+          generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 1024
+          }
+        })
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        console.error("Gemini API error:", response.status, data);
+        throw new Error(getErrorMessage(response.status, data));
+      }
+
+      const answer = (data.candidates?.[0]?.content?.parts || [])
+        .map(part => part.text || "")
+        .join("")
+        .trim();
+
+      if (!answer) {
+        throw new Error(
+          data.promptFeedback?.blockReason
+            ? "Request blocked: " + data.promptFeedback.blockReason
+            : "Gemini returned no text."
+        );
+      }
+
+      waiting.textContent = answer;
+
+      history.push(
+        { role: "user", parts: [{ text: userText }] },
+        { role: "model", parts: [{ text: answer }] }
+      );
+
+      // Bound memory to the latest 10 exchanges.
+      while (history.length > 20) {
+        history.splice(0, 2);
+      }
+
+      statusEl.textContent = "Gemini response received";
+    } catch (error) {
+      console.error("Friday chatbot error:", error);
+      waiting.textContent = "Error: " + error.message;
+
+      if (error instanceof TypeError) {
+        waiting.textContent +=
+          "\nCheck internet access and browser Console. Direct browser requests can encounter CORS restrictions.";
+      }
+      statusEl.textContent = "Request failed";
+    } finally {
+      busy = false;
+      sendBtn.disabled = false;
+      input.disabled = false;
+      input.focus();
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+  });
+})();
+</script>
+<!-- ===== END FRIDAY AI CHATBOT ===== -->
+
+
+
+
+
+
+
+
+
+</body>
+</html>

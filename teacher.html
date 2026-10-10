@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teacher Dashboard</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="page">
+  <div class="container">
+    <header class="topbar glass">
+      <div class="brand">
+        <img src="logo.jpeg" alt="Logo">
+        <div>
+          <span id="pageTitle">Teacher Dashboard</span>
+          <small id="pageSubtitle">Subject-based ERP tools</small>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <span class="badge" id="sessionBadge"></span>
+        <a href="portal.html" class="btn btn-secondary">Portal</a>
+        <a href="study.html" class="btn btn-primary">Study</a>
+        <button class="btn btn-danger" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <section class="summary-grid">
+      <div class="summary-item glass"><h3 id="teacherSubjectLabel">--</h3><p class="muted">Logged in subject</p></div>
+      <div class="summary-item glass"><h3 id="totalStudentsLabel">214</h3><p class="muted">Total students</p></div>
+      <div class="summary-item glass"><h3 id="teacherTypeLabel">--</h3><p class="muted">Teacher type</p></div>
+    </section>
+
+    <div class="tabs" style="margin-top:22px">
+      <button class="btn btn-secondary tab-btn active" data-tab="attendancePanel">Attendance</button>
+      <button class="btn btn-secondary tab-btn" data-tab="submissionPanel">Submission</button>
+      <button class="btn btn-secondary tab-btn" data-tab="marksPanel">Marks</button>
+      <button class="btn btn-secondary tab-btn" data-tab="chatPanel">Chat</button>
+    </div>
+
+    <section id="attendancePanel" class="tab-panel">
+      <div class="panel glass">
+        <div class="section-title"><h2>Day-wise Attendance (6 Lectures)</h2><button class="btn btn-primary" id="exportAttendanceBtn">Export Attendance CSV</button></div>
+        <div class="form-grid">
+          <div><label>Date</label><input id="attendanceDate" class="input" type="date" /></div>
+          <div><label>Lecture</label><select id="attendanceLecture" class="select"><option value="1">Lecture 1</option><option value="2">Lecture 2</option><option value="3">Lecture 3</option><option value="4">Lecture 4</option><option value="5">Lecture 5</option><option value="6">Lecture 6</option></select></div>
+        </div>
+        <div class="table-wrap" style="margin-top:18px">
+          <table class="table" id="attendanceTable"></table>
+        </div>
+        <button class="btn btn-primary" style="margin-top:16px" id="saveAttendanceBtn">Save Attendance</button>
+      </div>
+    </section>
+
+    <section id="submissionPanel" class="tab-panel hidden">
+      <div class="panel glass">
+        <div class="section-title"><h2>Practical Journal Submission Review</h2><span class="small" id="submissionInfo"></span></div>
+        <div class="table-wrap">
+          <table class="table" id="submissionTable"></table>
+        </div>
+      </div>
+    </section>
+
+    <section id="marksPanel" class="tab-panel hidden">
+      <div class="panel glass">
+        <div class="section-title"><h2>Subject-wise Marks Entry</h2><button class="btn btn-primary" id="exportMarksBtn">Export Marks CSV</button></div>
+        <div class="table-wrap">
+          <table class="table" id="marksTable"></table>
+        </div>
+        <button class="btn btn-primary" style="margin-top:16px" id="saveMarksBtn">Save Marks</button>
+      </div>
+    </section>
+
+    <section id="chatPanel" class="tab-panel hidden"></section>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/chat.js"></script>
+  <script src="assets/js/teacher.js"></script>
+</body>
+</html>

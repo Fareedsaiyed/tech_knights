@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ganpat University | ERP Login</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="page">
+  <div class="container">
+    <header class="topbar glass">
+      <div class="brand">
+        <img src="logo.jpeg" alt="Logo">
+        <div>Ganpat University<small>ERP Login Panel</small></div>
+      </div>
+      <div class="nav-actions">
+        <a href="portal.html" class="btn btn-secondary">Back to Portal</a>
+        <button class="btn btn-danger" id="resetDemoBtn">Reset Demo Data</button>
+      </div>
+    </header>
+
+    <section class="login-shell">
+      <div class="welcome-card glass">
+        <span class="badge">Login Instructions</span>
+        <h2>Teacher, Student and Admin Login</h2>
+        <p class="muted">Teacher login uses subject name + password. Student login uses enrollment number + password. Admin can edit teacher and student accounts.</p>
+        <div class="feature-list" style="margin-top:16px">
+          <div class="feature-item"><b>Teacher subjects:</b> awp, ldp, da, ews, sep, sad, ss</div>
+          <div class="feature-item"><b>Student range:</b> 25032211001 to 25032211214</div>
+          <div class="feature-item"><b>Teacher / Student password:</b> ampics</div>
+          <div class="feature-item"><b>Admin:</b> admin / admin123</div>
+        </div>
+      </div>
+
+      <div class="form-card glass">
+        <div class="tabs">
+          <button class="btn btn-secondary tab-btn active" data-tab="teacherTab">Teacher Login</button>
+          <button class="btn btn-secondary tab-btn" data-tab="studentTab">Student Login</button>
+          <button class="btn btn-secondary tab-btn" data-tab="adminTab">Admin Login</button>
+        </div>
+
+        <div id="teacherTab" class="tab-panel">
+          <h3 class="card-title">Teacher Corner Login</h3>
+          <div class="form-grid">
+            <div>
+              <label>Subject</label>
+              <select id="teacherSubject" class="select"></select>
+            </div>
+            <div>
+              <label>Password</label>
+              <input id="teacherPassword" class="input" type="password" value="ampics" />
+            </div>
+          </div>
+          <button class="btn btn-primary" style="margin-top:16px" id="teacherLoginBtn">Login as Teacher</button>
+        </div>
+
+        <div id="studentTab" class="tab-panel hidden">
+          <h3 class="card-title">Student Corner Login</h3>
+          <div class="form-grid">
+            <div>
+              <label>Enrollment Number</label>
+              <input id="studentEnrollment" class="input" type="text" value="25032211001" />
+            </div>
+            <div>
+              <label>Password</label>
+              <input id="studentPassword" class="input" type="password" value="ampics" />
+            </div>
+          </div>
+          <button class="btn btn-primary" style="margin-top:16px" id="studentLoginBtn">Login as Student</button>
+        </div>
+
+        <div id="adminTab" class="tab-panel hidden">
+          <h3 class="card-title">Admin Login</h3>
+          <div class="form-grid">
+            <div>
+              <label>Admin ID</label>
+              <input id="adminId" class="input" type="text" value="admin" />
+            </div>
+            <div>
+              <label>Password</label>
+              <input id="adminPassword" class="input" type="password" value="admin123" />
+            </div>
+          </div>
+          <button class="btn btn-primary" style="margin-top:16px" id="adminLoginBtn">Login as Admin</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/login.js"></script>
+</body>
+</html>

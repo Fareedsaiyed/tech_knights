@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="page">
+  <div class="container">
+    <header class="topbar glass">
+      <div class="brand">
+        <img src="logo.jpeg" alt="Logo">
+        <div>
+          <span id="pageTitle">Admin Panel</span>
+          <small id="pageSubtitle">Teacher and student account access</small>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <span class="badge" id="sessionBadge"></span>
+        <a href="portal.html" class="btn btn-secondary">Portal</a>
+        <button class="btn btn-danger" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <section class="summary-grid">
+      <div class="summary-item glass"><h3 id="adminTeachersCount">0</h3><p class="muted">Teacher Accounts</p></div>
+      <div class="summary-item glass"><h3 id="adminStudentsCount">0</h3><p class="muted">Student Accounts</p></div>
+      <div class="summary-item glass"><h3>Admin</h3><p class="muted">Full account access</p></div>
+    </section>
+
+    <section class="panel glass" style="margin-top:22px">
+      <div class="section-title"><h2>Edit Profile</h2><span class="small">Admin hi password change kar sakta hai aur student name edit kar sakta hai.</span></div>
+      <div class="form-grid compact-grid">
+        <div>
+          <label>Select Account</label>
+          <select id="adminAccountSelect" class="select"></select>
+        </div>
+      </div>
+
+      <div class="admin-edit-card glass-soft" style="margin-top:18px">
+        <div class="feature-list">
+          <div class="feature-item"><b>Role</b><div id="adminRoleLabel">--</div></div>
+          <div class="feature-item"><b>Identity</b><div id="adminIdentityLabel">--</div></div>
+        </div>
+
+        <div class="form-grid compact-grid" style="margin-top:18px">
+          <div id="adminStudentNameRow">
+            <label>Student Name</label>
+            <input id="adminStudentName" class="input" type="text" />
+          </div>
+          <div>
+            <label>Password</label>
+            <input id="adminPassword" class="input" type="text" />
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="adminSaveBtn" type="button" style="margin-top:16px">Save Changes</button>
+      </div>
+    </section>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
